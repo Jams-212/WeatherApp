@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报</title>
+<!--    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />-->
+    <link type="text/css" rel="stylesheet" href="weather.css" />
+	<style>
+
+ li {
+            list-style: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /*background-: bisque;*/
+            background-image: url(../static/img/background2.jpg);
+            /* background-image: url(/static/img/1.jpg); */
+            background-repeat: no-repeat;
+            /*这里的100% auto 表示将背景图片的长度100%显示，高度自适应*/
+            background-size: 100% auto;
+        }
+
+        #maxbox {
+            margin: 0 auto;
+            margin-top: 200px;
+            padding: 20px;
+            /*这里的90表示以不透明度90%显示*/
+            /*background-color: #72ade0;*/
+            background-color: rgba(255, 239, 213, 0.6); /* 设置红色背景，50%不透明度 */
+            text-align: center;
+            width: 600px;
+            height: 400px;
+            border-radius: 10px;
+        }
+
+        #maxbox h1 {
+            padding: 0;
+            padding-top: 60px;
+            color: white;
+            font-size: 30px;
+            padding-bottom: 4px;
+            border-bottom: solid 1px white;
+        }
+
+        #maxbox h2 {
+            font-weight: 700;
+            color:white;
+        }
+
+        #maxbox .inputbox {
+            margin-top: 30px;
+
+        }
+
+        #maxbox .inputText {
+            margin-top: 20px;
+
+        }
+
+        #maxbox .inputText span {
+            color: white;
+            font-size: 18px;
+
+
+        }
+
+        #maxbox .inputText input {
+            border: 0;
+            padding: 6px;
+            border-bottom: 1px solid white;
+            /*这里的00表示不透明度为0，即透明显示*/
+            background-color: #FFFFFF00;
+            color: white;
+        }
+
+        #maxbox .inputbox .inputButton {
+            margin: 0;
+            border: 0;
+            margin-top: 20px;
+            width: 145px;
+            height: 25px;
+            /*给这个按钮变为圆角边角*/
+            border-radius: 25px;
+            color: white;
+            background-color: #3498db;
+        }
+
+        #maxbox .op_weather4_twoicon_temp {
+            font-family: Arial;
+            font-size: 32px;
+            margin-top: 5px;
+            padding-left: 14px;
+            color: #ffffff;
+        }
+
+        #maxbox .op_weather4_twoicon_temp_max {
+            font-family: Arial;
+            font-size: 32px;
+            margin-top: 5px;
+            padding-left: 14px;
+            color: #ff4500;
+        }
+
+        #maxbox .op_weather4_twoicon_temp_min {
+            font-family: Arial;
+            font-size: 32px;
+            margin-top: 5px;
+            padding-left: 14px;
+            color: #0000cd;
+        }
+
+        #maxbox .op_weather4_twoicon_temp_other {
+            font-family: Arial;
+            font-size: 32px;
+            margin-top: 10px;
+            padding-left: 14px;
+            color: #d2691e;
+        }
+
+        #maxbox .op_weather4_twoicon_date {
+            font-family: Arial;
+            font-size: 32px;
+            margin-top: 5px;
+            padding-left: 14px;
+            color: #161616;
+        }
+
+        #sign_up {
+            margin-top: 50px;
+            color: white;
+            font-size: 17px;
+        }
+
+        #sign_up a {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+	<div id="maxbox">
+        {% for k,v in data_dict.items() %}
+        <div class="op_weather4_twoicon" style="height: 424px;">
+            <p class="op_weather4_twoicon_date" >{{v[3]}}</p>
+            <p class="op_weather4_twoicon_date" >当前查询：{{v[0]}}</p>
+			<a class="op_weather4_twoicon_temp_max" ><sup>{{v[2]}}</sup><sup>℃</sup></a>
+            <a class="op_weather4_twoicon_date"><sup>~</sup></a>
+            <a class="op_weather4_twoicon_temp_min" ><sup>{{v[1]}}</sup><sup>℃</sup></a>
+            <p class="op_weather4_twoicon_temp_other" ><sup>实时温度：{{v[4]}}</sup><sup>℃</sup></p>
+            <p class="op_weather4_twoicon_temp_other" ><sup>体感温度：{{v[5]}}</sup><sup>℃</sup></p>
+        </div>
+		{% endfor %}
+    </div>
+</body>
+</html>
